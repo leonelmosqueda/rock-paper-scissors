@@ -1,4 +1,6 @@
 const CHOICES = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 function computerPlay () {
     return CHOICES[Math.floor(Math.random() * CHOICES.length)];
@@ -19,6 +21,7 @@ function playRound (playerSelection, computerSelection) {
     computerSelection = computerPlay();
 
     const roundResult = checkRoundWinner(playerSelection, computerSelection);
+    return roundResult;
 }
 
 function checkChoice(userChoice) {
@@ -42,12 +45,44 @@ function checkRoundWinner (playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "This round is a tie!"
     } else if (playerSelection === CHOICES[0]) {
-        return computerSelection === CHOICES[1] ? `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}` : `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`
+        if (computerSelection === CHOICES[1]) {
+            computerScore++;
+            return `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`;
+        } else {
+            playerScore++;
+            return `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`;
+        }
     } else if (playerSelection === CHOICES[1]) {
-        return computerSelection === CHOICES[0] ? `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}` : `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`
+        if (computerSelection === CHOICES[0]) {
+            playerScore++;
+            return `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`;
+        } else {
+            computerScore++;
+            return `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`;
+        }
     } else {
-        return computerSelection === CHOICES[0] ? `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}` : `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`
+        if (computerSelection === CHOICES[0]) {
+            computerScore++
+            return `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`;
+        } else {
+            playerScore++;
+            return `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`;
+        }
     }
 }
 
-playRound();
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound());
+    }
+
+    if (playerScore > computerScore) {
+        console.log(`Congratulations! You Won!`);
+    } else if (playerScore === computerScore) {
+        console.log("It's a tie!");
+    } else {
+        console.log("Sorry! You Lost, Try Again!");
+    }
+}
+
+game();
