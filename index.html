@@ -32,21 +32,25 @@
             </div>
         </header>
 
-        <main>
+        <main class="content">
             <div class="choices">
                     <button type="button" class="btn-choice" id="rock">rock</button>
                     <button type="button" class="btn-choice" id="paper">paper</button>
                     <button type="button" class="btn-choice" id="scissors">scissors</button>
             </div>
             <div class="results">
-                <div class="player-choice">
-
+                <div class="show-choices">
+                    <div class="player-choice">
+                        <div class="header-choice">player</div>
+                        <div class="container-choice"><span id="player-choice"></span></div>
+                    </div>
+                    <div class="machine-choice">
+                        <div class="header-choice">machine</div>
+                        <div class="container-choice"><span id="machine-choice"></span></div>
+                    </div>
                 </div>
-                <div class="machine-choice">
-
-                </div>
-                <div class="result">
-
+                <div class="show-result">
+                    <span id="result"></span>
                 </div>
             </div>
         </main>

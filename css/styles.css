@@ -5,6 +5,10 @@
 
 body {
     background-color: #011627;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -23,6 +27,7 @@ body {
     color: #000;
     border-radius: 0.5em;
     border: 1px solid #FFF;
+    margin: 0 4em;
     width: 8em;
     height: 4em;
     display: flex;
@@ -43,7 +48,7 @@ body {
 .choices {
     background-color: #fdfffc;
     height: 8em;
-    width: 95%;
+    width: 90%;
     margin: 8em auto;
     border-radius: 1em;
     border: solid #fff 1px;
@@ -71,4 +76,94 @@ body {
     background-color: #E71D36;
     color: #FDFFFC;
     transition: all 0.5s;
+}
+
+.results {
+    width: 50%;
+    height: 16em;
+    background-color: #FDFFFC;
+    margin: -5em auto;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.show-choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.player-choice,
+.machine-choice {
+    margin: 0.5em 3em;
+    background-color: #FDFFFC;
+    color: #E71D36;
+    border: #E71D36 solid;
+    border-radius: 0.5em;
+    width: 10em;
+    height: 5em;
+}
+
+.header-choice {
+    margin: 0.5em 0;
+    text-transform: capitalize;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.container-choice {
+    width: 90%;
+    height: 2em;
+    margin: 0 auto;
+    background-color: #E71D36;
+    color: #FDFFFC;
+    border-radius: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.show-result {
+    width: 90%;
+    height: 50%;
+    margin: 1em auto;
+    background-color: #011627;
+    border-radius: 0.5em;
+    color: #FDFFFC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 900;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: #FDFFFC;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    background-color: #011627;
+    box-shadow: 0 0 8px rgb(255 255 255 / 10%);
 }
