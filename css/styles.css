@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: 700;
 }
 
 .header-score {
