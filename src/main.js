@@ -25,10 +25,9 @@ function playRound (e) {
     const machineSelection = computerPlay();
 
     showSelections(playerSelection, machineSelection);
-    // console.log(playerSelection, machineSelection);
-    // const roundResult = checkRoundWinner(playerSelection, computerSelection);
-    // showRoundResult(roundResult);
-    
+
+    const roundResult = checkRoundWinner(playerSelection.toUpperCase(), machineSelection.toUpperCase());
+    showResultRound(roundResult);
 
     // return roundResult;
 }
@@ -98,4 +97,10 @@ function showSelections (playerSelection, machineSelection) {
 
     $containerPlayerChoice.textContent = playerSelection;
     $containerMachineChoice.textContent = machineSelection;
+}
+
+function showResultRound (result) {
+    const $resultRound = document.querySelector("#result");
+
+    $resultRound.textContent = result;
 }
