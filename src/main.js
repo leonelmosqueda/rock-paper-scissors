@@ -112,9 +112,11 @@ function checkEndOfTheGame() {
     const $resultGame = document.querySelector('#result');
 
     if (playerScore === 5) {
-        showWinMessage($resultGame);        
+        showWinMessage($resultGame);
+        disabledBoard();        
     } else if (machineScore === 5) {
         showDefeatMessage($resultGame);
+        disabledBoard();
     } else {
         return;
     }
@@ -126,4 +128,10 @@ function showWinMessage (container) {
 
 function showDefeatMessage (container) {
     container.textContent = "Sorry! You Lost This Game!"
+}
+
+function disabledBoard () {
+    $btnChoices.forEach(btn => {
+        btn.classList.add('disabled');
+    })
 }
