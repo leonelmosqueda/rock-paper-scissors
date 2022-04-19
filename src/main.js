@@ -1,27 +1,36 @@
 const CHOICES = ["rock", "paper", "scissors"];
+const $btnChoices = document.querySelectorAll('.choices button');
+let round = 0;
+
 let playerScore = 0;
 let computerScore = 0;
+
+
+$btnChoices.forEach((choice) => {
+    choice.addEventListener('click', (e) => {
+        game(e);
+    });
+});
+
+function userPlay(e) {
+    return e.target.id;
+}
 
 function computerPlay () {
     return CHOICES[Math.floor(Math.random() * CHOICES.length)];
 }
 
-function userPlay() {
-    const userChoice = prompt('Please, enter: "Rock", "Paper" or "Scissors".').toLowerCase().trim();
+function playRound (e) {
+    const playerSelection = userPlay(e)
+    const machineSelection = computerPlay();
+
+    showSelections(playerSelection, machineSelection);
+    // console.log(playerSelection, machineSelection);
+    // const roundResult = checkRoundWinner(playerSelection, computerSelection);
+    // showRoundResult(roundResult);
     
-    if (checkChoice(userChoice)) {
-        return userChoice;
-    } else {
-        return console.log("Enter a correct choice!");
-    }
-}
 
-function playRound (playerSelection, computerSelection) {
-    playerSelection = userPlay();
-    computerSelection = computerPlay();
-
-    const roundResult = checkRoundWinner(playerSelection, computerSelection);
-    return roundResult;
+    // return roundResult;
 }
 
 function checkChoice(userChoice) {
@@ -71,18 +80,22 @@ function checkRoundWinner (playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound());
-    }
+function game(e) {
+    playRound(e);
 
-    if (playerScore > computerScore) {
-        console.log(`Congratulations! You Won!`);
-    } else if (playerScore === computerScore) {
-        console.log("It's a tie!");
-    } else {
-        console.log("Sorry! You Lost, Try Again!");
-    }
+    // if (playerScore > computerScore) {
+    //     console.log(`Congratulations! You Won!`);
+    // } else if (playerScore === computerScore) {
+    //     console.log("It's a tie!");
+    // } else {
+    //     console.log("Sorry! You Lost, Try Again!");
+    // }
 }
 
-game();
+function showSelections (playerSelection, machineSelection) {
+    const $containerPlayerChoice = document.querySelector('#player-choice');
+    const $containerMachineChoice = document.querySelector('#machine-choice');
+
+    $containerPlayerChoice.textContent = playerSelection;
+    $containerMachineChoice.textContent = machineSelection;
+}
