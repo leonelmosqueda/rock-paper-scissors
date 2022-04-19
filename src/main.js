@@ -30,7 +30,7 @@ function playRound (e) {
     updateScore(roundResult);
     showResultRound(roundResult);
 
-    // return roundResult;
+    checkEndOfTheGame();
 }
 
 function checkChoice(userChoice) {
@@ -77,14 +77,6 @@ function checkRoundWinner (playerSelection, computerSelection) {
 
 function game(e) {
     playRound(e);
-
-    // if (playerScore > computerScore) {
-    //     console.log(`Congratulations! You Won!`);
-    // } else if (playerScore === computerScore) {
-    //     console.log("It's a tie!");
-    // } else {
-    //     console.log("Sorry! You Lost, Try Again!");
-    // }
 }
 
 function showSelections (playerSelection, machineSelection) {
@@ -114,4 +106,24 @@ function showResultRound (result) {
     const $resultRound = document.querySelector("#result");
 
     $resultRound.textContent = result;
+}
+
+function checkEndOfTheGame() {
+    const $resultGame = document.querySelector('#result');
+
+    if (playerScore === 5) {
+        showWinMessage($resultGame);        
+    } else if (machineScore === 5) {
+        showDefeatMessage($resultGame);
+    } else {
+        return;
+    }
+}
+
+function showWinMessage (container) {
+    container.textContent = "Congratulations! You Won This Game!";
+}
+
+function showDefeatMessage (container) {
+    container.textContent = "Sorry! You Lost This Game!"
 }
