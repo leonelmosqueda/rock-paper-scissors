@@ -3,7 +3,7 @@ const $btnChoices = document.querySelectorAll('.choices button');
 let round = 0;
 
 let playerScore = 0;
-let computerScore = 0;
+let machineScore = 0;
 
 
 $btnChoices.forEach((choice) => {
@@ -26,7 +26,8 @@ function playRound (e) {
 
     showSelections(playerSelection, machineSelection);
 
-    const roundResult = checkRoundWinner(playerSelection.toUpperCase(), machineSelection.toUpperCase());
+    const roundResult = checkRoundWinner(playerSelection, machineSelection);
+    updateScore(roundResult);
     showResultRound(roundResult);
 
     // return roundResult;
@@ -47,34 +48,29 @@ function checkChoice(userChoice) {
 }
 
 function checkRoundWinner (playerSelection, computerSelection) {
-    const MESSAGE_WIN = "You Win This Round!"
-    const MESSAGE_LOSE = "You Lose This Round!"
+    const MESSAGE_WIN = "You Win This Round!";
+    const MESSAGE_LOSE = "You Lose This Round!";
+    const MESSAGE_TIE = "It's a Tie";
 
     if (playerSelection === computerSelection) {
-        return "This round is a tie!"
+        return MESSAGE_TIE;
     } else if (playerSelection === CHOICES[0]) {
         if (computerSelection === CHOICES[1]) {
-            computerScore++;
-            return `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`;
+            return MESSAGE_LOSE;
         } else {
-            playerScore++;
-            return `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`;
+            return MESSAGE_WIN;
         }
     } else if (playerSelection === CHOICES[1]) {
         if (computerSelection === CHOICES[0]) {
-            playerScore++;
-            return `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`;
+            return MESSAGE_WIN;
         } else {
-            computerScore++;
-            return `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`;
+            return MESSAGE_LOSE;
         }
     } else {
         if (computerSelection === CHOICES[0]) {
-            computerScore++
-            return `${MESSAGE_LOSE} ${computerSelection} beats ${playerSelection}`;
+            return MESSAGE_LOSE;
         } else {
-            playerScore++;
-            return `${MESSAGE_WIN} ${playerSelection} beats ${computerSelection}`;
+            return MESSAGE_WIN;
         }
     }
 }
@@ -97,6 +93,21 @@ function showSelections (playerSelection, machineSelection) {
 
     $containerPlayerChoice.textContent = playerSelection;
     $containerMachineChoice.textContent = machineSelection;
+}
+
+function updateScore(roundResult) {
+    const $playerScore = document.querySelector('#player-score');
+    const $machineScore = document.querySelector('#machine-score');
+
+    if (roundResult === "You Win This Round!") {
+        playerScore++;
+        $playerScore.textContent = playerScore.toString().padStart(2, '0');
+    } else if (roundResult === "You Lose This Round!") {
+        machineScore++;
+        $machineScore.textContent = machineScore.toString().padStart(2, '0');
+    } else {
+        return;
+    }
 }
 
 function showResultRound (result) {
