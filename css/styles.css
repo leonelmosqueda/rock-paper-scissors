@@ -80,15 +80,37 @@ body {
     align-items: center;
 }
 
-.results {
+.container-results {
     width: 50%;
     height: 16em;
-    background-color: #FDFFFC;
     margin: 0 auto;
     border-radius: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.container-btn-start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-start {
+    height: 2.5em;
+    width: 8em;
+    border: #E71D36 solid;
+    color: #E71D36;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.btn-start:hover {
+    color: #FDFFFC;
+    background-color: #E71D36;
 }
 
 .show-choices {
@@ -102,8 +124,8 @@ body {
 .machine-choice {
     margin: 0.5em 3em;
     background-color: #FDFFFC;
-    color: #E71D36;
-    border: #E71D36 solid;
+    color: #011627;
+    border: #011627 solid;
     border-radius: 0.5em;
     width: 10em;
     height: 5em;
@@ -121,7 +143,7 @@ body {
     width: 90%;
     height: 2em;
     margin: 0 auto;
-    background-color: #E71D36;
+    background-color: #011627;
     color: #FDFFFC;
     border-radius: 0.5em;
     display: flex;
