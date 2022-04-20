@@ -183,4 +183,5 @@ a {
     border: gray solid;
     background-color: gray;
     color: black;
+    cursor: not-allowed;
 }
