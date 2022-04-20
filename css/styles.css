@@ -134,7 +134,7 @@ body {
 
 .header-choice {
     margin: 0.5em 0;
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-weight: 900;
     font-size: 16px;
 }
@@ -206,4 +206,14 @@ a {
     background-color: gray;
     color: black;
     cursor: not-allowed;
+}
+
+.win-round {
+    box-shadow: #08ba5d 1px 1px 15px 5px;
+    transition: all 0.5s;
+}
+
+.lose-round {
+    box-shadow: #E71D36 1px 1px 15px 5px;
+    transition: all 0.5s;
 }
