@@ -1,9 +1,30 @@
 const CHOICES = ["rock", "paper", "scissors"];
 const $btnChoices = document.querySelectorAll('.choices button');
+const $btnStart = document.querySelector('#start-game');
 let round = 0;
 
 let playerScore = 0;
 let machineScore = 0;
+
+
+$btnStart.addEventListener('click', startGame)
+
+function startGame() {
+    enableDashboard();
+    disableButtonStart()
+}
+
+function enableDashboard() {
+    const $dashboard = document.querySelectorAll('.choices .container-frame');
+
+    $dashboard.forEach((option) => {option.classList.remove('disabled')});
+}
+
+function disableButtonStart () {
+    const $buttonStart = document.querySelector('#start-game');
+
+    $buttonStart.classList.add('disabled');
+}
 
 
 $btnChoices.forEach((choice) => {
