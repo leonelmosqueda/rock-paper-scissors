@@ -217,3 +217,8 @@ a {
     box-shadow: #E71D36 1px 1px 15px 5px;
     transition: all 0.5s;
 }
+
+.tie-round {
+    box-shadow: #e7961d 1px 1px 15px 5px;
+    transition: all 0.5s;
+}
